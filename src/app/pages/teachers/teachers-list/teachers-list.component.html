@@ -1,1 +1,56 @@
-<p>teachers-list works!</p>
+<div class="row">
+  <div class="col-12 text-center">
+    <span class="form-title">Profesores</span>
+  </div>
+</div>
+<hr />
+
+<div class="row justify-content-end align-items-center">
+  <div class="col-md-6 col-xs-6 me-auto">
+    <app-search-box
+      (onSearchValue)="searchTeachers($event)"
+      tag="Nombre"
+    ></app-search-box>
+  </div>
+  <div class="col-auto">
+    <button class="btn btn-success py-3" routerLink="/layout/teachers/detail">
+      <i class="fa-solid fa-user-plus"></i> Nuevo
+    </button>
+  </div>
+</div>
+
+<div class="mt-4">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>Nombre</td>
+        <td colspan="2">Opciones</td>
+      </tr>
+    </thead>
+    <tbody>
+      @for (teacher of teachers; track teacher.name; let i = $index) {
+      <tr>
+        <th>{{ i + 1 }}</th>
+        <th class="col-9">{{ teacher.name }}</th>
+        <th>
+          <button
+            [routerLink]="['/layout/teachers/detail/', teacher.id]"
+            class="btn btn-outline-warning"
+          >
+            Editar <i class="fa-solid fa-pen-to-square"></i>
+          </button>
+        </th>
+        <th>
+          <button
+            (click)="deleteTeacher(teacher.id)"
+            class="btn btn-outline-danger"
+          >
+            Eliminar <i class="fa-solid fa-eraser"></i>
+          </button>
+        </th>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,1 +1,35 @@
-<p>teachers-detail works!</p>
+<div class="row">
+  <div class="col-12 text-center">
+    <span class="form-title">Profesor</span>
+  </div>
+</div>
+<hr />
+
+<div class="container text-center">
+  <div class="row justify-content-md-center">
+    <div class="col-8">
+      <form [formGroup]="myForm" (ngSubmit)="save()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Nombre</label>
+          <input
+            formControlName="name"
+            name="name"
+            type="text"
+            autocomplete="off"
+            class="form-control"
+          />
+          <div id="emailHelp" class="form-text">Entre 3 y 50 caracteres.</div>
+        </div>
+
+        <button
+          [disabled]="!myForm.valid || this.myForm.pristine"
+          type="submit"
+          class="btn"
+          [ngClass]="isNew ? 'btn-success' : 'btn-warning'"
+        >
+          {{ isNew ? "Crear" : "Actualizar" }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
