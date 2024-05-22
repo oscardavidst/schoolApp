@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: Poppins-Bold;
+  src: url("./assets/fonts/poppins/Poppins-Bold.ttf");
+}
+
+.form-title {
+  display: block;
+  font-family: Poppins-Bold;
+  font-size: 39px;
+  color: #ffffff;
+  line-height: 1.2;
+  text-align: center;
+}

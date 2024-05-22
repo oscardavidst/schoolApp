@@ -1,0 +1,26 @@
+@font-face {
+  font-family: Poppins-Bold;
+  src: url("../../../../assets/fonts/poppins/Poppins-Bold.ttf");
+}
+
+@font-face {
+  font-family: Poppins-Regular;
+  src: url("../../../../assets/fonts/poppins/Poppins-Regular.ttf");
+}
+
+.login-form-title {
+  display: block;
+  font-family: Poppins-Bold;
+  font-size: 39px;
+  color: #ffffff;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.login-form-url {
+  font-family: Poppins-Regular;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #ffffff;
+  text-transform: uppercase;
+}

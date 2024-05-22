@@ -1,0 +1,16 @@
+<div class="input-group">
+  <div class="form-floating">
+    <input
+      (keyup.enter)="emitValue(txtValue.value)"
+      [placeholder]="tag"
+      type="text"
+      class="form-control"
+      id="floatingInput"
+      #txtValue
+    />
+    <label for="floatingInput">{{ tag }}</label>
+  </div>
+  <button (click)="emitValue(txtValue.value)" class="btn btn-outline-primary">
+    Buscar <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+</div>
