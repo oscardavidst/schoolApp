@@ -24,6 +24,8 @@ export class AuthService {
   private setAuthentication(user: User): boolean {
     this._currentUser.set(user);
     this._authStatus.set(AuthStatus.authenticated);
+    localStorage.setItem('email', user.email);
+    localStorage.setItem('roles', user.roles.toString());
     localStorage.setItem('token', user.jwToken);
 
     return true;
@@ -55,6 +57,8 @@ export class AuthService {
   }
 
   logout() {
+    localStorage.removeItem('email');
+    localStorage.removeItem('roles');
     localStorage.removeItem('token');
     this._currentUser.set(null);
     this._authStatus.set(AuthStatus.notAuthenticated);

@@ -39,6 +39,13 @@
           >
         </li>
       </ul>
+      <hr />
+      <div class="col-auto me-2 my-2">
+        <span class="badge text-bg-secondary"
+          >{{ userEmail }} <br />
+          {{ userRoles }}</span
+        >
+      </div>
       <button (click)="onLogout()" class="btn btn-dark">
         Logout <i class="fa-solid fa-right-from-bracket"></i>
       </button>
