@@ -1,1 +1,56 @@
-<p>scores-detail works!</p>
+<div class="row">
+  <div class="col-12 text-center">
+    <span class="form-title">Nota</span>
+  </div>
+</div>
+<hr />
+
+<div class="container text-center">
+  <div class="row justify-content-md-center">
+    <div class="col-8">
+      <form [formGroup]="myForm" (ngSubmit)="save()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Nombre</label>
+          <input
+            formControlName="name"
+            name="name"
+            type="text"
+            autocomplete="off"
+            class="form-control"
+          />
+          <div class="form-text">Entre 3 y 50 caracteres.</div>
+          <div class="my-3">
+            <label for="name" class="form-label">Nota</label>
+            <input
+              formControlName="value"
+              name="name"
+              type="number"
+              autocomplete="off"
+              class="form-control"
+            />
+          </div>
+          <span class="form-label">Estudiante</span>
+          <select formControlName="idStudent" class="form-select">
+            @for (student of students; track student.name) {
+            <option [ngValue]="student.id">{{ student.name }}</option>
+            }
+          </select>
+          <span class="form-label">Profesor</span>
+          <select formControlName="idTeacher" class="form-select">
+            @for (teacher of teachers; track teacher.name) {
+            <option [ngValue]="teacher.id">{{ teacher.name }}</option>
+            }
+          </select>
+        </div>
+        <button
+          [disabled]="!myForm.valid || this.myForm.pristine"
+          type="submit"
+          class="btn"
+          [ngClass]="isNew ? 'btn-success' : 'btn-warning'"
+        >
+          {{ isNew ? "Crear" : "Actualizar" }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

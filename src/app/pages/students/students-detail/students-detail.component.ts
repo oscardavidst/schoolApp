@@ -1,5 +1,6 @@
 import { CommonModule, NgClass } from '@angular/common';
 import { Component, Input, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
@@ -7,10 +8,9 @@ import {
   Validators,
 } from '@angular/forms';
 
-import Swal from 'sweetalert2';
 import { StudentsService } from './../../../core/services/students.service';
 import { Student } from '../../../core/interfaces';
-import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-students-detail',

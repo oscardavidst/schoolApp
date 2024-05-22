@@ -1,1 +1,107 @@
-<p>scores-list works!</p>
+<div class="row">
+  <div class="col-12 text-center">
+    <span class="form-title">Notas</span>
+  </div>
+</div>
+<hr />
+
+<div class="row justify-content-end align-items-center">
+  <div class="col-md-10 me-auto">
+    <form [formGroup]="myForm" (ngSubmit)="searchScores()" autocomplete="off">
+      <div class="row align-items-center">
+        <div class="col-auto text-center">
+          <span class="form-label">Nombre</span>
+          <input
+            formControlName="name"
+            placeholder="Nombre"
+            type="text"
+            class="form-control"
+          />
+        </div>
+        <div class="col-auto text-center">
+          <span class="form-label">Nota</span>
+          <input
+            formControlName="value"
+            placeholder="Nota"
+            type="number"
+            class="form-control"
+          />
+        </div>
+        <div class="col-auto text-center">
+          <span class="form-label">Estudiante</span>
+          <select formControlName="idStudent" class="form-select">
+            <option value="0" selected>-- Ninguno --</option>
+            @for (student of students; track student.name) {
+            <option [ngValue]="student.id">{{ student.name }}</option>
+            }
+          </select>
+        </div>
+        <div class="col-auto text-center">
+          <span class="form-label">Profesor</span>
+          <select formControlName="idTeacher" class="form-select">
+            <option value="0" selected>-- Ninguno --</option>
+            @for (teacher of teachers; track teacher.name) {
+            <option [ngValue]="teacher.id">{{ teacher.name }}</option>
+            }
+          </select>
+        </div>
+        <div class="col-auto">
+          <button
+            type="submit"
+            [disabled]="myForm.invalid"
+            class="btn btn-outline-primary mt-4"
+          >
+            Buscar <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-auto">
+    <button class="btn btn-success" routerLink="/layout/scores/detail">
+      <i class="fa-solid fa-plus"></i> Nueva
+    </button>
+  </div>
+</div>
+
+<div class="mt-4">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>Nombre</td>
+        <td>Nota</td>
+        <td>Estudiante</td>
+        <td>Profesor</td>
+        <td colspan="2">Opciones</td>
+      </tr>
+    </thead>
+    <tbody>
+      @for (score of scores; track score.value; let i = $index) {
+      <tr>
+        <th>{{ i + 1 }}</th>
+        <th>{{ score.name }}</th>
+        <th>{{ score.value }}</th>
+        <th>{{ score.studentName }}</th>
+        <th>{{ score.teacherName }}</th>
+        <th>
+          <button
+            [routerLink]="['/layout/scores/detail/', score.id]"
+            class="btn btn-outline-warning"
+          >
+            Editar <i class="fa-solid fa-pen-to-square"></i>
+          </button>
+        </th>
+        <th>
+          <button
+            (click)="deleteScore(score.id)"
+            class="btn btn-outline-danger"
+          >
+            Eliminar <i class="fa-solid fa-eraser"></i>
+          </button>
+        </th>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
